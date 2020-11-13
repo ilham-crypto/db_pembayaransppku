@@ -1,0 +1,39 @@
+</form>
+    <br/>
+    <table class="table table-hover" style="text-align: center;">
+        <thead>
+            <tr>
+                <th>ID_PEMBAYARAN</th>
+                <th>SIWA</th>
+                <th>BULAN</th>
+                <th>JUMLAH</th>
+                <th>TANGGAL TRANSAKSI</th>
+            </tr>
+        </thead>
+        <tbody class="table table-active" style="text-align: center;">
+            {{#each data}}
+            <tr>
+                <td>{{ id_pembayaran }}</td>
+                <td>{{ siswa }}</td>
+                <td>{{ bulan }}</td>
+                <td>{{ jumlah }}</td>
+                <td>{{ tanggal_transaksi }}</td>
+                <td><a href="/hapus-id_pembayaran/{{ id_pembayaran }}"><button>hapus</button></a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <h1>INPUT PEMBAYARAN</h1>
+    <form action="/inputpembayaran" method="POST">
+    <input type="text" name="inputsiswa" placeholder="SISWA">
+    <input type="month" name="inputbulan" placeholder="BULAN">
+    <input type="text" name="inputjumlah" placeholder="JUMLAH">
+    <input type="date" name="inputtanggal_transaksi" placeholder="TANGGAL TRANSAKSI">
+    <button type="submit"> TAMBAH</button>
+
+    index.post('/pembayaran', (req, res) =>{
+    var siswa = req.body.inputsiswa;
+    var bulan = req.body.inputbulan;
+    var jumlah = req.body.inputjumlah;
+    var tanggal_transaksi = req.body.inputtanggal_transaksi
